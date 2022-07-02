@@ -1,10 +1,15 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Sampler from "../components/Sampler";
+import { demoKit } from "../data/demoKit";
 
 export default function Home() {
+  const handleKeyPress = (e) => {
+    console.log(e.key);
+  };
+
   return (
-    <div className={styles.ReactMPC__container}>
+    <div className={styles.ReactMPC__container} onKeyDown={handleKeyPress}>
       <Head>
         <title>React MPC</title>
         <meta name="description" content="Javascript drum machine" />
@@ -16,7 +21,7 @@ export default function Home() {
           <span>React</span> MPC-2020 JS
         </h1>
 
-        <Sampler />
+        <Sampler samplesKit={demoKit} />
 
         <small>
           <a
