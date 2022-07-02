@@ -1,13 +1,25 @@
-.container {
-  padding: 0 2rem;
+.ReactMPC__container {
+  align-items: center;
+  background-color: #eeefdb;
+  background: radial-gradient(circle, #eeefdb 50%, #c6c7b3 80%);
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.ReactMPC__title {
+  color: #43454d;
+  font-size: 1.6em;
+}
+.ReactMPC__title span {
+  color: #e30b16;
+  font-family: "Bree Serif";
+}
+
+.ReactMPC__link {
+  color: #43454d;
+  display: block;
+  padding-top: 12px;
 }
