@@ -3,11 +3,24 @@ import Pad from "./Pad";
 import styles from "./Sampler.module.css";
 import { useState, useEffect } from "react";
 
-const handleKeyPress = (e) => {
-  console.log("yes", e.key);
+type Sample = {
+  padKey: string;
+  padName: string;
+  sound: string;
 };
 
-const Sampler = ({ samplesKit }: any) => {
+const validKeys = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
+
+const handleKeyPress = (e: KeyboardEvent) => {
+  const pressedKey = e.key.toUpperCase();
+
+  if (validKeys.includes(pressedKey)) {
+    const padFound = document.getElementById(pressedKey);
+    padFound.click();
+  }
+};
+
+const Sampler = ({ samplesKit }: { samplesKit: Sample[] }) => {
   const [pressed, setPressed] = useState("-");
 
   useEffect(() => {
@@ -17,7 +30,7 @@ const Sampler = ({ samplesKit }: any) => {
     };
   }, []);
 
-  const padsKit = samplesKit.map((sample) => {
+  const padsKit = samplesKit.map((sample: Sample) => {
     return <Pad sample={sample} setPressed={setPressed} key={sample.padKey} />;
   });
 
