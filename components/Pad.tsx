@@ -23,6 +23,7 @@ const Pad = ({ sample, setPressed }) => {
 
   return (
     <button
+      id={sample.padKey}
       className={`${styles.Sampler__pad} ${
         playing ? styles["Sampler__pad--active"] : ""
       }`}
