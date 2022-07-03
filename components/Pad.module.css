@@ -13,7 +13,7 @@
   width: 30%;
 }
 
-.Sampler__pad.active {
+.Sampler__pad--active {
   background: radial-gradient(circle, #696e7d 0%, #6c7180 100%);
 }
 

@@ -4,12 +4,8 @@ import Sampler from "../components/Sampler";
 import { demoKit } from "../data/demoKit";
 
 export default function Home() {
-  const handleKeyPress = (e) => {
-    console.log(e.key);
-  };
-
   return (
-    <div className={styles.ReactMPC__container} onKeyDown={handleKeyPress}>
+    <div className={styles.ReactMPC__container}>
       <Head>
         <title>React MPC</title>
         <meta name="description" content="Javascript drum machine" />
