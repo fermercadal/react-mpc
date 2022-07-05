@@ -11,27 +11,22 @@ export default function Home() {
         <meta name="description" content="Javascript drum machine" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <h1 className={styles.ReactMPC__title}>
+        <span>React</span> MPC-2022 JS
+      </h1>
 
-      <main>
-        <h1 className={styles.ReactMPC__title}>
-          <span>React</span> MPC-2020 JS
-        </h1>
+      <Sampler samplesKit={demoKit} />
 
-        <Sampler samplesKit={demoKit} />
-
-        <small>
-          <a
-            className={styles.ReactMPC__link}
-            href="https://en.wikipedia.org/wiki/Akai_MPC"
-            target="_blank"
-            rel="noreferrer"
-          >
-            + info about AKAI MPC
-          </a>
-        </small>
-      </main>
+      <small>
+        <a
+          className={styles.ReactMPC__link}
+          href="https://en.wikipedia.org/wiki/Akai_MPC"
+          target="_blank"
+          rel="noreferrer"
+        >
+          + info about AKAI MPC
+        </a>
+      </small>
     </div>
   );
 }
-
-// id="drum-machine" className="mpc"
