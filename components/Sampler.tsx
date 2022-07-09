@@ -11,27 +11,54 @@ type Sample = {
 
 const validKeys = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
 
-const handleKeyPress = (e: KeyboardEvent) => {
-  const pressedKey = e.key.toUpperCase();
+const playSound = (key: string) => {
+  const pressed = key;
+  const audio = document.getElementById(`audio-${pressed}`) as HTMLAudioElement;
+  const button = document.getElementById(`button-${pressed}`);
 
-  if (validKeys.includes(pressedKey)) {
-    const padFound = document.getElementById(pressedKey);
-    padFound.click();
-  }
+  audio.currentTime = 0;
+  audio.play();
+
+  button.classList.add(styles["Sampler__pad--active"]);
+  setTimeout(() => {
+    button.classList.remove(styles["Sampler__pad--active"]);
+  }, 100);
 };
 
 const Sampler = ({ samplesKit }: { samplesKit: Sample[] }) => {
   const [pressed, setPressed] = useState("-");
 
   useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      const pressedKey = e.key.toUpperCase();
+
+      if (validKeys.includes(pressedKey)) {
+        const pressedPadName = samplesKit.find(
+          (sample) => sample.padKey === pressedKey
+        ).padName;
+
+        playSound(pressedKey);
+        setPressed(pressedPadName);
+      }
+    };
+
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
+  }, [samplesKit]);
 
   const padsKit = samplesKit.map((sample: Sample) => {
-    return <Pad sample={sample} setPressed={setPressed} key={sample.padKey} />;
+    return (
+      <Pad
+        sample={sample}
+        setPressed={setPressed}
+        key={sample.padKey}
+        playSound={() => {
+          playSound(sample.padKey);
+        }}
+      />
+    );
   });
 
   return (
