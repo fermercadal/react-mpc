@@ -13,10 +13,6 @@
   width: 30%;
 }
 
-.Sampler__pad--active {
-  background: radial-gradient(circle, #696e7d 0%, #6c7180 100%);
-}
-
 .Sampler__pad span {
   bottom: 10px;
   color: #43454d;

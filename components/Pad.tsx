@@ -1,35 +1,19 @@
-import { useState } from "react";
 import styles from "./Pad.module.css";
 
-const Pad = ({ sample, setPressed }) => {
-  const [playing, setplaying] = useState(false);
-
-  let padSound: any;
-  if (typeof Audio !== "undefined") {
-    padSound = new Audio(`/sounds/${sample.sound}.mp3`);
-  }
-
-  const playSound = () => {
-    setplaying(true);
-    setPressed(sample.padName);
-    if (padSound) {
-      padSound.currentTime = 0;
-      padSound.play();
-    }
-    setTimeout(() => {
-      setplaying(false);
-    }, 100);
-  };
-
+const Pad = ({ sample, playSound, setPressed }) => {
   return (
     <button
-      id={sample.padKey}
-      className={`${styles.Sampler__pad} ${
-        playing ? styles["Sampler__pad--active"] : ""
-      }`}
-      onClick={playSound}
+      id={`button-${sample.padKey}`}
+      className={styles.Sampler__pad}
+      onClick={() => {
+        setPressed(sample.padName);
+        playSound();
+      }}
     >
       <span>{sample.padKey}</span>
+      <audio id={`audio-${sample.padKey}`} src={`/sounds/${sample.sound}.mp3`}>
+        Your browser does not support the <code>audio</code> element.
+      </audio>
     </button>
   );
 };
