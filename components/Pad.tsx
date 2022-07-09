@@ -4,6 +4,7 @@ const Pad = ({ sample, playSound, setPressed }) => {
   return (
     <button
       id={`button-${sample.padKey}`}
+      data-testid={sample.padKey}
       className={styles.Sampler__pad}
       onClick={() => {
         setPressed(sample.padName);
